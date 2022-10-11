@@ -1,3 +1,4 @@
+
 const LINK = "api.openweathermap.org/data/2.5/weather?";
 const KEY = "5bcb14e4112b3edf06ab910aaff0768a";
 const KELVIN = 273;
@@ -8,10 +9,9 @@ const descriptionHtml = document.getElementById("description");
 const cityHtml = document.getElementById("city");
 const countryHtml = document.getElementById("country");
 const iconImg = document.getElementById("icon");
-const loading = document.getElementById("loading");
+const loader = document.getElementById("loader");
 // const loading_container = document.getElementById("loading-container");
 // const information = document.getElementById("information");
-
 
 const cities = [
     {
@@ -76,6 +76,9 @@ const cities = [
     },
 ];
 
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 async function fetchWeatherData(lat, lon){
     try {
@@ -102,18 +105,23 @@ function loadCities() {
     });
 };
 
+async function loadingAnimation(){
+    loader.style.visibility = "visible";
+    await timeout(2000);
+    loader.style.visibility = "hidden";
+}
+
 async function renderWeather(lat, lon) {
     try {
         const res = await fetchWeatherData(lat, lon);
-        
-        // loading.style.width = "100%";
-        // loading_container.style.visibility = "hidden";
+        await loadingAnimation();
+
         temperatureHtml.textContent = Math.floor(res.main.temp - KELVIN)+" °C";
         descriptionHtml.textContent = res.weather[0].description;
         cityHtml.textContent = res.name;
         countryHtml.textContent = res.sys.country;
         iconImg.innerHTML = `<img src="icons/${res.weather[0].icon}.png"/>`;
-        //loading.style.width = "0%";
+
     } catch (error) {
         console.log(error);
     }
