@@ -1,6 +1,6 @@
 //const title = document.getElementById("title");
 //const {loadCities} = require('./utils/loadCities');
-import {loadCities} from './utils/loadCities';
+import {loadCities} from './utils/loadCities.js';
 // function timeout(ms) {
 //     return new Promise(resolve => setTimeout(resolve, ms));
 // }

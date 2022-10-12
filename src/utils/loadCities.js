@@ -1,6 +1,6 @@
-const { renderWeather } = require('./renderWeather');
-
-function loadCities() { 
+// const { renderWeather } = require('./renderWeather');
+import { renderWeather } from './renderWeather.js';
+export function loadCities() { 
     const cities = [
         {
             id: 1,
@@ -79,4 +79,4 @@ function loadCities() {
     return citiesList;
 };
 
-module.exports = {loadCities};
+// module.exports = {loadCities};

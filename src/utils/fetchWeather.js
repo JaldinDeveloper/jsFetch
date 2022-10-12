@@ -1,5 +1,5 @@
 
-async function fetchWeatherData(lat, lon){
+export async function fetchWeatherData(lat, lon){
     try {
         const LINK = "api.openweathermap.org/data/2.5/weather?";
         const KEY = "5bcb14e4112b3edf06ab910aaff0768a";
@@ -12,4 +12,4 @@ async function fetchWeatherData(lat, lon){
     }    
 }
 
-module.exports = {fetchWeatherData};
+// module.exports = {fetchWeatherData};

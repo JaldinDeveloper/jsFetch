@@ -1,5 +1,7 @@
-const { loadingAnimation} = require('./loadingAnimation');
-async function renderWeather(lat, lon) {
+// const { loadingAnimation} = require('./loadingAnimation');
+import { loadingAnimation } from './loadingAnimation.js';
+import {fetchWeatherData} from './fetchWeather.js';
+export async function renderWeather(lat, lon) {
     try {
         const temperatureHtml = document.getElementById("temperature");
         const descriptionHtml = document.getElementById("description");
@@ -22,4 +24,4 @@ async function renderWeather(lat, lon) {
     }
 }
 
-module.exports = { renderWeather};
+// module.exports = { renderWeather};
