@@ -20,7 +20,8 @@ import "@testing-library/jest-dom/extend-expect";
 const { JSDOM } = require("jsdom");
 import fs from "fs";
 import path from "path";
-
+import { async } from 'regenerator-runtime';
+import { renderWeather } from '../src/utils/renderWeather';
 const html  = fs.readFileSync(path.join(__dirname,"../index.html"), "utf8");
 
 let dom;
@@ -54,9 +55,28 @@ describe('checking how fetching weather works', () => {
 
     expect(document.querySelector('.dropdown-item')).toBeInTheDocument();
   });
+
   it('should not have dropdown-Items after execute loadCities', () => {
     expect(document.querySelector('.dropdown-item')).toBeNull();
-  })
+  });
+
+  test('should not have dropdown-Items after execute loadCities', async() => {
+    const cities = [
+      {
+        id: 1,
+        city: "Santa Cruz",
+        lat: "-17.8",
+        long: "-63.1667"
+      }
+    ];
+    //let view = dom.window.document;
+    await renderWeather("-17.8", "-63.1667", dom.window.document);
+
+    // expect(document.getByText("Santa Cruz")).toBeInTheDocument();
+   expect(dom.window.document.getElementById("country").textContent).toBe("BO");
+    //expect(document.querySelector('.dropdown-item')).toBeNull();
+  });
+
 });
 
 

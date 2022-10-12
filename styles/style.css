@@ -1,9 +1,10 @@
 .loader {
     /* display: inline-block; */
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 40%;
+    height: 10%;
     visibility: hidden;
+    padding-top: 15%;
   }
 .loader:after {
     content: " ";
@@ -13,7 +14,7 @@
     height: 0;
     margin: 8px;
     box-sizing: border-box;
-    border: 60px solid #ff9f1a;
+    border: 50px solid #ff9f1a;
     border-color: #ff9f1a transparent #ff9f1a transparent;
     animation: loader-animation 2.2s infinite;
 }

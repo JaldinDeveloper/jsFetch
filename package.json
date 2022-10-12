@@ -1,9 +1,10 @@
 {
   "name": "jsfetch",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
-  "type": "module",
+  
   "scripts": {
     "test": "jest --env=jsdom",
     "build": "babel src/ --out-dir build",
@@ -32,8 +33,10 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "cross-fetch": "^3.1.5",
     "fs": "^0.0.1-security",
     "jsdom": "^19.0.0",
+    "node-fetch": "1.7.3",
     "path": "^0.12.7",
     "regenerator-runtime": "^0.13.5",
     "util": "^0.12.4",

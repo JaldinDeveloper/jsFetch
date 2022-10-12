@@ -12,7 +12,7 @@ export function loadCities(cities,doc) {
         const aChild = doc.createElement("a");
         aChild.classList.add("dropdown-item");
         aChild.textContent = city.city;
-        aChild.onclick = (event) => { renderWeather(city.lat,city.long);};
+        aChild.onclick = (event) => { renderWeather(city.lat,city.long,doc);};
         aChild.id = city.id;
         liChild.appendChild(aChild);
         citiesList.appendChild(liChild);
