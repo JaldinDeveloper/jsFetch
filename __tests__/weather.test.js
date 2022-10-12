@@ -25,7 +25,7 @@ const html  = fs.readFileSync(path.join(__dirname,"../index.html"), "utf8");
 
 let dom;
 let document;
-// let screen;
+let screen;
 
 
 
@@ -37,29 +37,25 @@ describe('checking how fetching weather works', () => {
       includeNodeLocations: true
     });
     document = dom.window.document.body;
-    // screen = dom.window.screen;
+    screen = document.querySelector('#cities-list');
   });
-  test('Check addTodo able add todo to todoList', () => {
-    // document.body.innerHTML = `
-    //   <div class="btn-group" id="group">
-    //   <button type="button" class="btn btn-danger">Cities</button>
-    //   <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    //     <span class="visually-hidden">Toggle Dropdown</span>
-    //   </button>
-    //   <ul class="dropdown-menu" id="cities-list">
-    //   </ul>
-    //   </div>
-    // `;
-    // loadCities();
-    //require('../weather.js');
-    // const newTodoInput = document.getElementById('newTodoInput');
-    // const addTodoBtn = document.getElementById('addTodoBtn');
-    // const todolist = document.getElementById('todoList');
+  it('should have dropdown-Items after execute loadCities', () => {
 
-    // newTodoInput.value = 'New todolist!';
-    // addTodoBtn.click();
+    const cities = [
+      {
+        id: 1,
+        city: "Santa Cruz",
+        lat: "-17.8",
+        long: "-63.1667"
+      }
+    ];
+    
+    loadCities(cities,dom.window.document );
 
-    expect('<li>New todolist!</li>').toBe('<li>New todolist!</li>');
+    expect(document.querySelector('.dropdown-item')).toBeInTheDocument();
+  });
+  it('should not have dropdown-Items after execute loadCities', () => {
+    expect(document.querySelector('.dropdown-item')).toBeNull();
   })
 });
 
