@@ -1,6 +1,8 @@
-const fetchP = import('node-fetch').then(mod => mod.default)
-const fetch = (...args) => fetchP.then(fn => fn(...args))
+// const fetchP = import('node-fetch').then(mod => mod.default)
+// const fetch = (...args) => fetchP.then(fn => fn(...args))
 // const fetch = require("node-fetch");
+// import Fetch from "../../node_modules/node-fetch/index.js";
+
 export async function fetchWeatherData(lat, lon){
     try {
         const LINK = "api.openweathermap.org/data/2.5/weather?";

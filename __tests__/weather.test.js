@@ -24,6 +24,9 @@ import { async } from 'regenerator-runtime';
 import { renderWeather } from '../src/utils/renderWeather';
 const html  = fs.readFileSync(path.join(__dirname,"../index.html"), "utf8");
 
+
+const fetch = require("node-fetch");
+global.fetch = fetch;
 let dom;
 let document;
 let screen;
@@ -60,21 +63,19 @@ describe('checking how fetching weather works', () => {
     expect(document.querySelector('.dropdown-item')).toBeNull();
   });
 
-  test('should not have dropdown-Items after execute loadCities', async() => {
+  test('should return an specific city with the following coords', async() => {
     const cities = [
       {
         id: 1,
-        city: "Santa Cruz",
+        city: "Santa Cruz de la Sierra",
         lat: "-17.8",
         long: "-63.1667"
       }
     ];
-    //let view = dom.window.document;
-    await renderWeather("-17.8", "-63.1667", dom.window.document);
 
-    // expect(document.getByText("Santa Cruz")).toBeInTheDocument();
-   expect(dom.window.document.getElementById("country").textContent).toBe("BO");
-    //expect(document.querySelector('.dropdown-item')).toBeNull();
+    await renderWeather(cities[0].lat, cities[0].long, dom.window.document);
+
+   expect(dom.window.document.getElementById("city").textContent).toBe(cities[0].city);
   });
 
 });

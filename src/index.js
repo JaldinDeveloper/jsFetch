@@ -1,6 +1,9 @@
 //const title = document.getElementById("title");
 //const {loadCities} = require('./utils/loadCities');
 import {loadCities} from './utils/loadCities.js';
+// import fetch from "node-fetch/";
+// const {fetch} = require("node-fetch");
+// global.fetch = fetch;
 // function timeout(ms) {
 //     return new Promise(resolve => setTimeout(resolve, ms));
 // }

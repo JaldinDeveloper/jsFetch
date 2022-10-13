@@ -6,7 +6,7 @@
   "main": "index.js",
   
   "scripts": {
-    "test": "jest --env=jsdom",
+    "test": "jest --env=jsdom --coverage",
     "build": "babel src/ --out-dir build",
     "serve": "node build/index.js"
   },

@@ -8,16 +8,16 @@ var _loadingAnimation = require("./loadingAnimation.js");
 var _fetchWeather = require("./fetchWeather.js");
 // const { loadingAnimation} = require('./loadingAnimation');
 
-async function renderWeather(lat, lon) {
+async function renderWeather(lat, lon, doc) {
   try {
-    const temperatureHtml = document.getElementById("temperature");
-    const descriptionHtml = document.getElementById("description");
-    const cityHtml = document.getElementById("city");
-    const countryHtml = document.getElementById("country");
-    const iconImg = document.getElementById("icon");
+    const temperatureHtml = doc.getElementById("temperature");
+    const descriptionHtml = doc.getElementById("description");
+    const cityHtml = doc.getElementById("city");
+    const countryHtml = doc.getElementById("country");
+    const iconImg = doc.getElementById("icon");
     const KELVIN = 273;
     const res = await (0, _fetchWeather.fetchWeatherData)(lat, lon);
-    await (0, _loadingAnimation.loadingAnimation)();
+    await (0, _loadingAnimation.loadingAnimation)(doc);
     temperatureHtml.textContent = Math.floor(res.main.temp - KELVIN) + " °C";
     descriptionHtml.textContent = res.weather[0].description;
     cityHtml.textContent = res.name;
